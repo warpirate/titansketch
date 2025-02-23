@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TitanSketch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <h1>TitanSketch<span class="emoji">🎨</span></h1>
+            <p class="subtitle">Create Anime-Style Masterpieces</p>
+
+            <div class="input-section">
+                <h3>Scene Description <span class="emoji">🎬</span></h3>
+                <textarea id="description" placeholder="Describe your scene... (e.g., cyberpunk samurai with glowing blade under cherry blossoms)"></textarea>
+                
+                <!-- Quick Tags -->
+                <div class="quick-tags">
+                    <button class="tag" data-tag="mecha">mecha</button>
+                    <button class="tag" data-tag="chibi">chibi</button>
+                    <button class="tag" data-tag="sparkles">sparkles</button>
+                    <button class="tag" data-tag="cyberpunk">cyberpunk</button>
+                </div>
+
+                <h3>Art Style <span class="emoji">🎨</span></h3>
+                <div class="style-grid">
+                    <button class="style-btn" data-style="Ghibli">
+                        <span class="emoji">🌿</span>
+                        <span>Ghibli</span>
+                    </button>
+                    <button class="style-btn" data-style="Cyberpunk">
+                        <span class="emoji">🌆</span>
+                        <span>Cyberpunk</span>
+                    </button>
+                    <button class="style-btn" data-style="90s Retro">
+                        <span class="emoji">📼</span>
+                        <span>90s Retro</span>
+                    </button>
+                    <button class="style-btn" data-style="Fantasy">
+                        <span class="emoji">✨</span>
+                        <span>Fantasy</span>
+                    </button>
+                </div>
+
+                <h3>Advanced Settings <span class="emoji">⚙️</span></h3>
+                <div class="slider-container">
+                    <label>Line Sharpness <span class="emoji">✏️</span></label>
+                    <input type="range" id="lineSharpness" min="0" max="100" value="50">
+                    
+                    <label>Color Vibrancy <span class="emoji">🎨</span></label>
+                    <input type="range" id="colorVibrancy" min="0" max="100" value="50">
+                    
+                    <label>Anime Eye Size <span class="emoji">👁️</span></label>
+                    <input type="range" id="eyeSize" min="0" max="100" value="50">
+                </div>
+
+                <button id="generateBtn" class="generate-btn">Generate Art <span class="emoji">✨</span></button>
+            </div>
+        </div>
+
+        <!-- Center Panel -->
+        <div class="center-panel">
+            <div id="generatedPrompt" class="generated-prompt"></div>
+            <div id="imageContainer" class="image-container">
+                <div id="loadingSpinner" class="loading-spinner hidden">
+                    <div class="bouncing-mascot">🐼</div>
+                    <p>Creating your masterpiece...</p>
+                </div>
+                <img id="generatedImage" src="" alt="" class="hidden">
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="export-section">
+                <button id="downloadBtn" class="download-btn" disabled>
+                    <span class="emoji">⬇️</span> Download Artwork
+                </button>
+            </div>
+
+            <div class="history-section">
+                <h3>Creation History <span class="emoji">📜</span></h3>
+                <div id="historyGallery" class="history-gallery">
+                    {% for item in history %}
+                    <div class="history-item">
+                        <img src="{{ url_for('static', filename=item.image_path.replace('static/', '')) }}" alt="Generated Art">
+                        <div class="history-prompt">{{ item.prompt }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-content">
+            <div class="mascot-loader">🐱</div>
+            <p>Generating your anime masterpiece...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+    "modelId": "amazon.titan-image-generator-v1",
+    "contentType": "application/json",
+    "accept": "application/json",
+    "body": {
+        "textToImageParams": {
+            "text": "A serene mountain landscape at sunset with snow-capped peaks and a crystal-clear lake reflecting the orange sky"
+        },
+        "taskType": "TEXT_IMAGE",
+        "imageGenerationConfig": {
+            "cfgScale": 8,
+            "seed": 42,
+            "quality": "standard",
+            "width": 1024,
+            "height": 1024,
+            "numberOfImages": 3
+        }
+    }
+}
