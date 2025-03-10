@@ -2,6 +2,13 @@
 
 A sophisticated web application that generates high-quality anime-style artwork using AWS Bedrock's Titan Image Generator. This project combines modern web technologies with AI capabilities to create unique, customizable anime illustrations based on text descriptions.
 
+Interface
+![image](https://github.com/user-attachments/assets/3a2b6c57-04a2-46fa-be84-1e72d87acbc4)
+
+Generated Image
+![Screenshot (424)](https://github.com/user-attachments/assets/5f5f6ac5-e0cc-4fc2-a99b-aeab06f4064d)
+
+
 ## 🌟 Features
 
 - **Text-to-Image Generation**: Transform textual descriptions into anime-style artwork
